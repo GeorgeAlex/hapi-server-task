@@ -1,0 +1,34 @@
+{
+  "name": "hapi-server-task",
+  "version": "1.0.0",
+  "description": "Hapi server API to interact with Jobs",
+  "main": "dist/index.js",
+  "repository": "git@github.com:GeorgeAlex/hapi-server-task.git",
+  "author": "George Stoian <george@truepill.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2",
+    "mongoose": "^6.5.0",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/hapi__hapi": "^20.0.12",
+    "@types/node": "^18.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "mongodb-memory-server": "^8.8.0",
+    "nodemon": "^2.0.19"
+  }
+}

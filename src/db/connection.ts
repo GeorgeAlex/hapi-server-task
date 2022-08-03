@@ -7,7 +7,11 @@ const mongoServer = new MongoMemoryServer()
  * Connect to the in-memory database.
  */
 export const connect = async () => {
-    await mongoServer.start()
+    if (mongoServer.state !== 'running') {
+      await mongoServer.start()
+    }
+    
+    await mongoServer.ensureInstance()
     const uri = await mongoServer.getUri()
 
     const mongooseOpts = {

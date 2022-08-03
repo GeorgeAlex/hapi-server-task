@@ -7,29 +7,29 @@ const mongoServer = new MongoMemoryServer()
  * Connect to the in-memory database.
  */
 export const connect = async () => {
-    if (mongoServer.state !== 'running') {
-      await mongoServer.start()
-    }
-    
-    await mongoServer.ensureInstance()
-    const uri = await mongoServer.getUri()
+  if (mongoServer.state !== 'running') {
+    await mongoServer.start()
+  }
 
-    const mongooseOpts = {
-      autoIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    };
+  await mongoServer.ensureInstance()
+  const uri = await mongoServer.getUri()
 
-    return mongoose.connect(uri, mongooseOpts)
-      .then(() => console.log('Connected to MongoDB'))
-      .catch(err => console.error('Failed to connect to MongoDB', err))
+  const mongooseOpts = {
+    autoIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+
+  return mongoose.connect(uri, mongooseOpts)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Failed to connect to MongoDB', err))
 }
 
 /**
  * Drop database, close the connection and stop mongod.
  */
 export const closeDatabase = async () => {
-    await mongoose.connection.dropDatabase()
-    await mongoose.connection.close()
-    await mongoServer.stop()
+  await mongoose.connection.dropDatabase()
+  await mongoose.connection.close()
+  await mongoServer.stop()
 }

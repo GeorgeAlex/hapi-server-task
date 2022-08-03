@@ -9,7 +9,7 @@ export const getJobsHandler = async (request: Request, h: ResponseToolkit) => {
     const jobs = await Job.find({}).sort({ createdAt: -1 })
 
     return h.response({
-      jobs: jobs.map((job) => formatJobDocumentForResponse(job)),
+      jobs: jobs.map(job => formatJobDocumentForResponse(job)),
     })
   } catch (err) {
     console.error('Failed to retrieve job list', err)

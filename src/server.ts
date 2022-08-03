@@ -26,7 +26,7 @@ export const start = async (): Promise<Server> => {
   return server
 }
 
-process.on('unhandledRejection', async (err) => {
+process.on('unhandledRejection', async err => {
   console.error('unhandledRejection')
   console.error(err)
   await closeDatabase()
